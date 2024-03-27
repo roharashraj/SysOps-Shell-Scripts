@@ -28,22 +28,16 @@ jobs:
       - name: Script Start
         run: echo -e "\n * * * Start of Script * * * \n"
 
-      # - name: Get user input
-      #   id: get_input
-      #   run: |
-      #     echo "Enter value for NODE_VERSIONS (e.g., 20.x):"
-      #     read user_version
-      #     echo "NODE_VERSIONS=$user_version" >> $GITHUB_ENV  # Add input to environment
-
-
-      - name: Run Bash script with user input
-        uses: actions/run-script@v1
-        with:
-          script: ./ubuntu-server-22LTS/ubuntu-server-22LTS-install-nodejs.sh
+      # - name: Set environment variables
+      #   env:
+      #     NODE_VERSIONS: 20.x
+          
+      - name: Run Bash script with environment variables
         env:
           NODE_VERSIONS: 20.x
+        run: |
+          bash ./ubuntu-server-22LTS/ubuntu-server-22LTS-install-nodejs.sh
 
-            
       # - name: Execute and Test all files
       #   run: |
       #     cd ubuntu-server-22LTS
