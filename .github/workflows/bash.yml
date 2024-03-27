@@ -36,6 +36,8 @@ jobs:
         env:
           NODE_VERSIONS: 20.x
         run: |
+          echo "Installing Node.js ${{ steps.run_selection_script.outputs.NODE_VERSION }}"
+          chmod +x ./ubuntu-server-22LTS/ubuntu-server-22LTS-install-nodejs.sh
           bash ./ubuntu-server-22LTS/ubuntu-server-22LTS-install-nodejs.sh
 
       # - name: Execute and Test all files
