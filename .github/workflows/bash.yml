@@ -29,5 +29,6 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       - run: cd ubuntu-server-22LTS
+      - run: ls -l
       - run: chmod +x ubuntu-server-22LTS-update-upgrade.sh
       - run: ./ubuntu-server-22LTS-update-upgrade.sh
