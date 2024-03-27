@@ -3,9 +3,11 @@
 # Enable exit on error
 set -e
 
+# NodeJS 20.x LTS
+NODE_VERSION=20.x
+
 # # Available NodeJS versions (modify as needed)
 # NODE_VERSIONS=(18.x 20.x 21.x)
-
 # # Display available versions
 # echo "Available NodeJS versions:"
 # select NODE_VERSION in "${NODE_VERSIONS[@]}" "Exit"; do
@@ -17,9 +19,6 @@ set -e
 #   *) echo "Invalid choice. Please select a valid version or Exit.";;
 #   esac
 # done
-
-
-NODE_VERSION=20.x
 
 # Update package lists
 echo -e "\n * * * sudo apt-get update * * * \n" 
