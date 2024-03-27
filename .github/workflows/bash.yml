@@ -28,20 +28,35 @@ jobs:
       - name: Script Start
         run: echo -e "\n * * * Start of Script * * * \n"
 
-      - name: Execute and Test all files
-        run: |
-          cd ubuntu-server-22LTS
-          ls -l
-          chmod +x ./*.sh
-          ls -l
-          for file in *.sh; do
-            if [[ -x $file ]]; then
-              echo "Running $file..."
-              ./$file
-            fi
-          done
-      - name: Script End
-        run: echo -e "\n * * * End of Script * * * \n"
+      # - name: Get user input
+      #   id: get_input
+      #   run: |
+      #     echo "Enter value for NODE_VERSIONS (e.g., 20.x):"
+      #     read user_version
+      #     echo "NODE_VERSIONS=$user_version" >> $GITHUB_ENV  # Add input to environment
+
+
+      - name: Run Bash script with user input
+        uses: actions/run-script@v1
+        with:
+          script: ${{ path.githubWorkspace }}/ubuntu-server-22LTS/ubuntu-server-22LTS-install-nodejs.sh
+        env:
+          NODE_VERSIONS: 20.x
+
+            
+      # - name: Execute and Test all files
+      #   run: |
+      #     cd ubuntu-server-22LTS
+      #     chmod +x ./*.sh
+          
+      #     for file in *.sh; do
+      #       if [[ -x $file ]]; then
+      #         echo "Running $file..."
+      #         ./$file
+      #       fi
+      #     done
+      # - name: Script End
+      #   run: echo -e "\n * * * End of Script * * * \n"
 
           
       # # ################################
