@@ -25,10 +25,43 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      # ################################
+      - uses: actions/checkout@v3  # Checkout code from repository
+
+      - name: Create folder (Step 1)
+        run: mkdir my_scripts  # Create a folder named "my_scripts"
+
+      - name: Create files (Step 2)
+        run: |
+          touch my_scripts/file1.sh
+          touch my_scripts/file2.py
+          touch my_scripts/file3.txt
+          echo '#!/bin/bash' >> my_scripts/file4.sh  # Add basic shebang for execution
+          echo 'echo "Hello from file4!"' >> my_scripts/file4.sh  # Add content to file4
+
+      - name: Make files executable (optional - Step 3)
+        run: chmod +x my_scripts/*.sh  # Make all .sh files executable
+
+      - name: Navigate to folder (Step 4)
+        run: cd my_scripts
+
+      - name: Run executable files (Step 5)
+        run: |
+          for file in *.sh; do
+            if [[ -x $file ]]; then
+              echo "Running $file..."
+              ./$file
+            fi
+          done
+
+      - name: Return to previous directory (Step 6)
+        run: cd -
+      # #######################################
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - run: cd ubuntu-server-22LTS
-      - run: ls -l
-      - run: chmod +x ./ubuntu-server-22LTS/ubuntu-server-22LTS-update-upgrade.sh
-      - run: ./ubuntu-server-22LTS/ubuntu-server-22LTS-update-upgrade.sh
+      # - name: Run a one-line script
+      #   run: echo Hello, world!
+      # - run: cd ubuntu-server-22LTS
+      # - run: ls -l
+      # - run: chmod +x ./ubuntu-server-22LTS/ubuntu-server-22LTS-update-upgrade.sh
+      # - run: ./ubuntu-server-22LTS/ubuntu-server-22LTS-update-upgrade.sh
+      
