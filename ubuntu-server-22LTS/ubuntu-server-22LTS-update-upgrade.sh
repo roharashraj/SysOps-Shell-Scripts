@@ -4,17 +4,19 @@
 set -e
 
 # Update package list
-echo -e "\n * * * sudo apt-get update * * * \n" 
-sudo apt-get update
+echo -e "\n * * * sudo apt update * * * \n" 
+sudo apt update
 
 # Update package list
-echo -e "\n * * * sudo apt-get upgrade -y * * * \n" 
-sudo apt-get upgrade -y
+echo -e "\n * * * sudo apt upgrade -y * * * \n" 
+sudo apt upgrade -y
 
 # echo -e "\n * * * sudo apt-get autoclean * * * \n"
-# sudo apt-get autoclean
+echo -e "\n * * * sudo apt autoclean * * * \n" 
+sudo apt autoclean
 
 # echo -e "\n * * * sudo apt-get autoremove * * * \n"
-# sudo apt-get autoremove
+echo -e "\n * * * sudo apt autoremove * * * \n" 
+sudo apt autoremove
 
 echo -e "\nUbuntu Server Updated & Upgraded successfully" 
