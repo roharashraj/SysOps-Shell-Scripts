@@ -39,7 +39,7 @@ jobs:
       - name: Run Bash script with user input
         uses: actions/run-script@v1
         with:
-          script: ${{ path.githubWorkspace }}/ubuntu-server-22LTS/ubuntu-server-22LTS-install-nodejs.sh
+          script: ./ubuntu-server-22LTS/ubuntu-server-22LTS-install-nodejs.sh
         env:
           NODE_VERSIONS: 20.x
 
