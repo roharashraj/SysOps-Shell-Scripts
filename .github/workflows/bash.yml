@@ -19,6 +19,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      NODE_VERSIONS: 20.x
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,13 +30,7 @@ jobs:
       - name: Script Start
         run: echo -e "\n * * * Start of Script * * * \n"
 
-      # - name: Set environment variables
-      #   env:
-      #     NODE_VERSIONS: 20.x
-          
       - name: Run Bash script with environment variables
-        env:
-          NODE_VERSIONS: 20.x
         run: |
           echo "Installing Node.js ${{ steps.run_selection_script.outputs.NODE_VERSION }}"
           chmod +x ./ubuntu-server-22LTS/ubuntu-server-22LTS-install-nodejs.sh
